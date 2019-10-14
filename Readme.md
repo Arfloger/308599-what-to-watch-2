@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Ксения Мельникова](https://up.htmlacademy.ru/react/2/user/308599).
-* Наставник: [Юрий Татаринцев(https://htmlacademy.ru/profile/id235196)]`.
+* Наставник: [Юрий Татаринцев(https://htmlacademy.ru/profile/id235196)].
 
 ---
 
