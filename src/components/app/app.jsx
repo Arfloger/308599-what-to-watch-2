@@ -1,12 +1,31 @@
 import React from 'react';
+import {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import {SmallMovieCard} from '../small-movie-card/small-movie-card.jsx';
+import {SmallMovieCardList} from '../small-movie-card-list/small-movie-card-list.jsx';
 
-export const App = (props) => {
-  const {movieTitles} = props;
+export default class App extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  return <>
+    this.state = {
+      activeCard: null,
+    };
+
+    this._movieHandler = this._movieHandler.bind(this);
+  }
+
+  _movieHandler(movieData) {
+    this.setState({
+      activeCard: movieData,
+    });
+  }
+
+  render() {
+    const {cards} = this.props;
+
+
+    return <>
     <section className="movie-card">
       <div className="movie-card__bg">
         <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -99,9 +118,10 @@ export const App = (props) => {
           </li>
         </ul>
 
-        <div className="catalog__movies-list">
-          {movieTitles.map((it, index) => <SmallMovieCard key={movieTitles + index} title={it} />)}
-        </div>
+        {<SmallMovieCardList
+          films={cards}
+          onMovieOver={this._movieHandler}
+        />}
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -123,8 +143,9 @@ export const App = (props) => {
       </footer>
     </div>
   </>;
-};
+  }
+}
 
 App.propTypes = {
-  movieTitles: PropTypes.arrayOf(PropTypes.string),
+  cards: PropTypes.arrayOf(PropTypes.object),
 };
