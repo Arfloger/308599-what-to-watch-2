@@ -2,28 +2,15 @@ import React from 'react';
 import {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import {SmallMovieCardList} from '../small-movie-card-list/small-movie-card-list.jsx';
+import SmallMovieCardList from '../small-movie-card-list/small-movie-card-list.jsx';
 
 export default class App extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      activeCard: null,
-    };
-
-    this._movieHandler = this._movieHandler.bind(this);
-  }
-
-  _movieHandler(movieData) {
-    this.setState({
-      activeCard: movieData,
-    });
   }
 
   render() {
     const {cards} = this.props;
-
 
     return <>
     <section className="movie-card">
@@ -120,7 +107,6 @@ export default class App extends PureComponent {
 
         {<SmallMovieCardList
           films={cards}
-          onMovieOver={this._movieHandler}
         />}
 
         <div className="catalog__more">

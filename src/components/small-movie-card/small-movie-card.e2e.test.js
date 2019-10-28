@@ -9,15 +9,15 @@ Enzyme.configure({adapter: new Adapter()});
 
 it(`SmallMovieCard is correctly`, () => {
   const film = films[0];
-  const mouseOverHandler = jest.fn();
+  const mouseHoverHandler = jest.fn();
   const smallMovieCard = shallow(<SmallMovieCard
     movie={film}
-    onMovie={mouseOverHandler}
+    onMovie={mouseHoverHandler}
   />);
 
   const movieCard = smallMovieCard.find(`.small-movie-card`);
   movieCard.simulate(`mouseOver`);
 
-  expect(mouseOverHandler).toHaveBeenCalledTimes(1);
-  expect(mouseOverHandler).toHaveBeenCalledWith(film);
+  expect(mouseHoverHandler).toHaveBeenCalledTimes(1);
+  expect(mouseHoverHandler).toHaveBeenCalledWith(film);
 });
