@@ -1,5 +1,4 @@
-import React from 'react';
-import {PureComponent} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 import SmallMovieCardList from '../small-movie-card-list/small-movie-card-list.jsx';
