@@ -6,7 +6,8 @@ import {SmallMovieCard} from "./small-movie-card.jsx";
 it(`SmallMovieCard correctly renders after relaunch`, () => {
   const tree = renderer
     .create(<SmallMovieCard
-      title = {`Fantastic Beasts`}
+      movie={{}}
+      onMovie={() => {}}
     />).toJSON();
 
   expect(tree).toMatchSnapshot();
