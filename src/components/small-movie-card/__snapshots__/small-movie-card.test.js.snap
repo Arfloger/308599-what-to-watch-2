@@ -3,13 +3,16 @@
 exports[`SmallMovieCard correctly renders after relaunch 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
   onMouseOver={[Function]}
 >
   <div
     className="small-movie-card__image"
   >
-    <img
+    <video
       height="175"
+      muted={true}
       width="280"
     />
   </div>
