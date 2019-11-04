@@ -1,9 +1,10 @@
 import React, {PureComponent} from 'react';
+import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
 
-export default class SmallMovieCardList extends PureComponent {
+export class SmallMovieCardList extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -40,3 +41,9 @@ export default class SmallMovieCardList extends PureComponent {
 SmallMovieCardList.propTypes = {
   films: PropTypes.array.isRequired,
 };
+
+const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+  films: state.films
+});
+
+export default connect(mapStateToProps)(SmallMovieCardList);
