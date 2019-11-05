@@ -7,27 +7,20 @@ import {ActionCreator} from '../../reducer.js';
 export class GenreItem extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      activeTab: `All genres`,
-    };
   }
 
 
   render() {
-    const {genreName, onGenreTabClick} = this.props;
+    const {genreName, activeTab, onGenreTabClick} = this.props;
 
     return (
-      <li className={genreName === this.state.activeTab ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`}>
+      <li className={activeTab ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`}>
         <a
           href="#"
           className="catalog__genres-link"
           onClick={(evt) => {
             evt.preventDefault();
             onGenreTabClick(evt.target.textContent);
-
-            this.setState({
-              activeTab: evt.target.textContent,
-            });
           }}
         >
           {genreName}
@@ -41,6 +34,7 @@ export class GenreItem extends PureComponent {
 GenreItem.propTypes = {
   genreName: PropTypes.string,
   onGenreTabClick: PropTypes.func,
+  activeTab: PropTypes.bool,
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps,
@@ -55,6 +49,5 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.getFilms(genre));
   },
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(GenreItem);
