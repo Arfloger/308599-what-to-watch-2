@@ -45,7 +45,7 @@ const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps,
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreTabClick: (genre) => {
-    dispatch(ActionCreator.chengeGenre(genre));
+    dispatch(ActionCreator.changeGenre(genre));
     dispatch(ActionCreator.getFilms(genre));
   },
 });

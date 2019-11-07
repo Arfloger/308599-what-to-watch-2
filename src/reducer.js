@@ -1,6 +1,6 @@
 import {films} from './mocks/film';
 
-const getFilms = (genre) => {
+export const getFilms = (genre) => {
 
   if (genre === `All genres`) {
     return films.slice();
@@ -15,8 +15,8 @@ export const initialState = {
 };
 
 export const ActionCreator = {
-  chengeGenre: (genre) => ({
-    type: `CHENGE_GENRE`,
+  changeGenre: (genre) => ({
+    type: `CHANGE_GENRE`,
     payload: genre,
   }),
 
@@ -28,7 +28,7 @@ export const ActionCreator = {
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case `CHENGE_GENRE`:
+    case `CHANGE_GENRE`:
       return Object.assign({}, state, {
         genre: action.payload,
       });

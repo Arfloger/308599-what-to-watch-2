@@ -4,13 +4,15 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {reducer} from "../../reducer";
 
-import App from "./app.jsx";
+import GenreItem from "./genre-item.jsx";
 
-it(`App correctly renders after relaunch`, () => {
+it(`GenreItem correctly renders after relaunch`, () => {
   const store = createStore(reducer);
   const tree = renderer
-    .create(<Provider store={store}><App
-      cards={[]}
+    .create(<Provider store={store}><GenreItem
+      genreName={``}
+      activeTab={false}
+      onGenreTabClick={() => {}}
     /></Provider>).toJSON();
 
   expect(tree).toMatchSnapshot();
