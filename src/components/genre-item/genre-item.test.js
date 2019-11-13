@@ -12,7 +12,7 @@ it(`GenreItem correctly renders after relaunch`, () => {
     .create(<Provider store={store}><GenreItem
       genreName={``}
       activeTab={false}
-      onGenreTabClick={() => {}}
+      onClick={() => {}}
     /></Provider>).toJSON();
 
   expect(tree).toMatchSnapshot();
