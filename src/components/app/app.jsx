@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import SmallMovieCardList from '../small-movie-card-list/small-movie-card-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+
+const WithGenresList = withActiveItem(GenresList);
 
 export default class App extends PureComponent {
   constructor(props) {
@@ -71,7 +74,7 @@ export default class App extends PureComponent {
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <GenresList
+        <WithGenresList
           films={cards}
         />
         <SmallMovieCardList

@@ -38,12 +38,12 @@ export class SmallMovieCardList extends PureComponent {
 
 }
 
-SmallMovieCardList.propTypes = {
-  films: PropTypes.array.isRequired,
-};
-
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   films: state.films
 });
+
+SmallMovieCardList.propTypes = {
+  films: PropTypes.array.isRequired,
+};
 
 export default connect(mapStateToProps)(SmallMovieCardList);

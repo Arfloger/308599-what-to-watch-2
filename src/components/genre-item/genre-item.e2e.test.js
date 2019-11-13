@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import {GenreItem} from "./genre-item.jsx";
+import GenreItem from "./genre-item.jsx";
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -12,7 +12,7 @@ it(`GenreItem click is correctly`, () => {
       <GenreItem
         genreName={``}
         activeTab={false}
-        onGenreTabClick={clickHandler}/>);
+        onClick={clickHandler}/>);
 
   const genreItemLink = genreItem.find(`.catalog__genres-link`).first();
 
