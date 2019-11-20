@@ -39,7 +39,7 @@ export class SmallMovieCardList extends PureComponent {
 }
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
-  films: state.films
+  films: state.films,
 });
 
 SmallMovieCardList.propTypes = {

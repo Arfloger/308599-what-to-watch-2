@@ -13,8 +13,6 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const {cards} = this.props;
-
     return <>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -74,12 +72,8 @@ export default class App extends PureComponent {
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <WithGenresList
-          films={cards}
-        />
-        <SmallMovieCardList
-          films={cards}
-        />
+        <WithGenresList/>
+        <SmallMovieCardList/>
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
