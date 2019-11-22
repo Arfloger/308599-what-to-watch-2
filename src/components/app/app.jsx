@@ -1,5 +1,4 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 
 import SmallMovieCardList from '../small-movie-card-list/small-movie-card-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
@@ -97,7 +96,3 @@ export default class App extends PureComponent {
   </>;
   }
 }
-
-App.propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.object),
-};

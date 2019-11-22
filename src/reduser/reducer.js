@@ -73,7 +73,7 @@ export const reducer = (state = initialState, action) => {
 };
 
 export const Operation = {
-  loadFilms: () => (dispatch, _, api) => {
+  loadFilms: () => (dispatch, _getState, api) => {
     return api.get(`/films`)
       .then((response) => {
         dispatch(ActionCreator.loadFilms(response.data));

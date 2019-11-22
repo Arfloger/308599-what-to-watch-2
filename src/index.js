@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import {compose} from 'recompose';
 
 import App from './components/app/app.jsx';
-import {reducer, Operation} from './reduser/reducer';
+import {reducer} from './reduser/reducer';
 import {createAPI} from './api';
 
 const init = () => {
@@ -19,8 +19,6 @@ const init = () => {
           window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
       )
   );
-
-  store.dispatch(Operation.loadFilms());
 
   ReactDOM.render(
       <Provider store={store}>
