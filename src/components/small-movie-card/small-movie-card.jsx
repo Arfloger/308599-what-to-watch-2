@@ -36,7 +36,6 @@ export default class SmallMovieCard extends PureComponent {
   render() {
     const {movie, onMovie} = this.props;
     const {isVideoPlaying} = this.state;
-    const {name, posterImage, previewVideoLink} = movie;
 
     return (
       <article
@@ -46,10 +45,9 @@ export default class SmallMovieCard extends PureComponent {
         onMouseLeave={this._handleMouseLeave}
       >
         <div className="small-movie-card__image">
-
           <VideoPlayer
-            src={previewVideoLink}
-            poster={posterImage}
+            src={movie.preview_video_link}
+            poster={movie[`background_image`]}
             isPlaying={isVideoPlaying}
           />
 
@@ -59,7 +57,7 @@ export default class SmallMovieCard extends PureComponent {
             className="small-movie-card__link"
             href="movie-page.html"
           >
-            {name}
+            {movie.name}
           </a>
         </h3>
       </article>
@@ -67,7 +65,6 @@ export default class SmallMovieCard extends PureComponent {
   }
 
 }
-
 
 SmallMovieCard.propTypes = {
   movie: PropTypes.object.isRequired,

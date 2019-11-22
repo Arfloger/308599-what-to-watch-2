@@ -1,5 +1,4 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 
 import SmallMovieCardList from '../small-movie-card-list/small-movie-card-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
@@ -13,8 +12,6 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const {cards} = this.props;
-
     return <>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -74,12 +71,8 @@ export default class App extends PureComponent {
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <WithGenresList
-          films={cards}
-        />
-        <SmallMovieCardList
-          films={cards}
-        />
+        <WithGenresList/>
+        <SmallMovieCardList/>
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -103,7 +96,3 @@ export default class App extends PureComponent {
   </>;
   }
 }
-
-App.propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.object),
-};
