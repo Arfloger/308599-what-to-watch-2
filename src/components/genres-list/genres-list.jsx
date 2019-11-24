@@ -35,6 +35,7 @@ const mapDispatchToProps = (dispatch) => ({
   onGenreTabClick: (genre) => {
     dispatch(ActionCreator.changeGenre(genre));
     dispatch(ActionCreator.filteredFilms(genre));
+    dispatch(ActionCreator.resetToMinFilms());
   }
 });
 

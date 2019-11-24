@@ -14,10 +14,13 @@ export const filteredFilms = (genre) => {
   return initialState.films.slice().filter((it) => it.genre === genre);
 };
 
+const MIN_CARDS_ON_PAGE = 8;
+
 export const initialState = {
   genre: `All genres`,
   genres: [`All genres`],
   films: [],
+  cardsOnPage: MIN_CARDS_ON_PAGE,
 };
 
 const ActionType = {
@@ -25,6 +28,8 @@ const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   FILTERED_FILMS: `FILTERED_FILMS`,
   GET_GENRE_LIST: `GET_GENRE_LIST`,
+  INCREASE_QUANTITY_FILMS: `INCREASE_QUANTITY_FILMS`,
+  RESET_TO_MIN_FILMS: `RESET_TO_MIN_FILMS`,
 };
 
 export const ActionCreator = {
@@ -47,6 +52,17 @@ export const ActionCreator = {
     type: ActionType.GET_GENRE_LIST,
     payload: getGenreList(genres),
   }),
+
+  increaseQuantityFilms: () => ({
+    type: ActionType.INCREASE_QUANTITY_FILMS,
+    payload: 20,
+  }),
+
+  resetToMinFilms: () => ({
+    type: ActionType.RESET_TO_MIN_FILMS,
+    payload: MIN_CARDS_ON_PAGE,
+  }),
+
 };
 
 export const reducer = (state = initialState, action) => {
@@ -66,6 +82,14 @@ export const reducer = (state = initialState, action) => {
     case ActionType.FILTERED_FILMS:
       return Object.assign({}, state, {
         films: action.payload,
+      });
+    case ActionType.INCREASE_QUANTITY_FILMS:
+      return Object.assign({}, state, {
+        cardsOnPage: state.cardsOnPage + action.payload,
+      });
+    case ActionType.RESET_TO_MIN_FILMS:
+      return Object.assign({}, state, {
+        cardsOnPage: action.payload,
       });
   }
 
