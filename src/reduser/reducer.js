@@ -21,6 +21,7 @@ export const initialState = {
   genres: [`All genres`],
   films: [],
   cardsOnPage: MIN_CARDS_ON_PAGE,
+  requireAuthorization: false,
 };
 
 const ActionType = {
@@ -30,6 +31,8 @@ const ActionType = {
   GET_GENRE_LIST: `GET_GENRE_LIST`,
   INCREASE_QUANTITY_FILMS: `INCREASE_QUANTITY_FILMS`,
   RESET_TO_MIN_FILMS: `RESET_TO_MIN_FILMS`,
+  REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
+  LOGIN_USER: `LOGIN_USER`,
 };
 
 export const ActionCreator = {
@@ -63,6 +66,16 @@ export const ActionCreator = {
     payload: MIN_CARDS_ON_PAGE,
   }),
 
+  requireAuthorization: (status) => ({
+    type: ActionType.REQUIRE_AUTHORIZATION,
+    payload: status,
+  }),
+
+  loginUser: (data) => ({
+    type: ActionType.LOGIN_USER,
+    payload: data
+  }),
+
 };
 
 export const reducer = (state = initialState, action) => {
@@ -91,6 +104,16 @@ export const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         cardsOnPage: action.payload,
       });
+    case ActionType.REQUIRE_AUTHORIZATION:
+      return Object.assign({}, state, {
+        requireAuthorization: action.payload,
+      });
+    case ActionType.LOGIN_USER: return Object.assign({}, state, {
+      id: action.payload.id,
+      email: action.payload.email,
+      name: action.payload.name,
+      avatar: action.payload.avatar_url,
+    });
   }
 
   return state;
@@ -104,5 +127,23 @@ export const Operation = {
         dispatch(ActionCreator.getGenreList(response.data));
         initialState.films = response.data;
       });
+  },
+  checkAuth: (login, password) => {
+    return (dispatch, _getState, api) => {
+      return api
+        .post(`/login`, {
+          email: login,
+          password,
+        })
+        .then((res) => {
+          if (res.status >= 200) {
+            dispatch(ActionCreator.requireAuthorization(true));
+            dispatch(ActionCreator.loginUser(res.data));
+          }
+        })
+        .catch((error) => {
+          throw new Error(error);
+        });
+    };
   }
 };

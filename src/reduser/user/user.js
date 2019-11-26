@@ -1,9 +1,9 @@
 export const initialState = {
-  requireAuthorization: false,
+  requireAuthorization: true,
 };
 
 const ActionType = {
-  REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`
+  REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
 };
 
 export const ActionCreator = {
