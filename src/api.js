@@ -1,6 +1,7 @@
 import axios from 'axios';
+import {ActionCreator} from './reduser/reducer';
 
-export const createAPI = (onLoginFail) => {
+export const createAPI = (dispatch) => {
   const api = axios.create({
     baseURL: `https://htmlacademy-react-2.appspot.com/wtw`,
     timeout: 1000 * 5,
@@ -10,7 +11,7 @@ export const createAPI = (onLoginFail) => {
   const onSuccess = (response) => response;
   const onFail = (err) => {
     if (err.status === 401) {
-      onLoginFail();
+      dispatch(ActionCreator.requireAuthorization(true));
       return;
     }
 
